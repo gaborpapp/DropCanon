@@ -25,5 +25,5 @@ class ofApp : public ofBaseApp{
         UI mUI;
     
         bool showUI;
-		
+        ofVec2f p;
 };

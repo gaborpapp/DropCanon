@@ -15,13 +15,13 @@ public:
     //  different vector fields
     ofVec3f getNoise( ofVec3f _noisePos, float _time );
     ofVec3f getUniform();
+    ofVec3f getCircular( ofVec3f _particlePos, float _distance, float _ratio, float _time );
     ofVec3f getSpiral( ofVec3f _particlePos, float _distance, float _ratio, float _time );
-    
+    ofVec3f getOscill( ofVec3f _particlePos, float _distance, float _ratio, float _spin, float _time );
     
     void numParticlesChanged(int& _param );			// Callbacks from the UI
     vector< FieldParticle >		particles;
     
     ofEasyCam camera;
     bool inited = false;
-    string mode;
 };

@@ -13,6 +13,8 @@ public:
     static float fieldNoiseAmount;
     static float fieldSpiralAmount;
     static float fieldUniformAmount;
+    static float fieldCircularAmount;
+    static float fieldOscillAmount;
     static float fieldRandomOffset;
     static float fieldMagnitude;
     static float fieldSpaceFrequency;
@@ -21,6 +23,8 @@ public:
     static float fieldMaxVel;
     static float fieldMaxAge;
     static float fieldSpiralRatio;
+    static float fieldCircularRatio;
+    static float fieldOscillRatio;
     static int   fieldTailLength;
     
 };

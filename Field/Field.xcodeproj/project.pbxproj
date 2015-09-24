@@ -10,8 +10,8 @@
 		0E459598E225E56585AC1CD9 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48DCDAD346F8188ABA98C64A /* ofxPanel.cpp */; };
 		3A47706C1DF9A0D4045568C0 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D015FA91E7717ECC9591593E /* ofxGuiGroup.cpp */; };
 		413A3F52C6AC90B4F28A6A1C /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 448869D12B9D05298EF975CB /* ofxToggle.cpp */; };
-		781ECF861BA95C37001F70B4 /* FieldGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 781ECF7E1BA95C37001F70B4 /* FieldGenerator.cpp */; };
-		781ECF871BA95C37001F70B4 /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 781ECF841BA95C37001F70B4 /* UI.cpp */; };
+		78B2E0701BB3DF730095B7DD /* FieldGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78B2E0681BB3DF730095B7DD /* FieldGenerator.cpp */; settings = {ASSET_TAGS = (); }; };
+		78B2E0711BB3DF730095B7DD /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78B2E06E1BB3DF730095B7DD /* UI.cpp */; settings = {ASSET_TAGS = (); }; };
 		92A50AF72101624C3A8E6446 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C846292EE0D139BE5E0C7E7F /* ofxButton.cpp */; };
 		9F74DFA8C0F57500C92936C8 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCAA4D953378BD89C6667D4 /* ofxSlider.cpp */; };
 		A3C6983F8768ECD6DBA89E0F /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70AAD97154A7F3A7E07DD2E8 /* ofxSliderGroup.cpp */; };
@@ -60,14 +60,14 @@
 		4581B326630EC957ED91E25E /* ofxToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxToggle.h; path = ../../addons/ofxGui/src/ofxToggle.h; sourceTree = SOURCE_ROOT; };
 		48DCDAD346F8188ABA98C64A /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxPanel.cpp; path = ../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
 		70AAD97154A7F3A7E07DD2E8 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSliderGroup.cpp; path = ../../addons/ofxGui/src/ofxSliderGroup.cpp; sourceTree = SOURCE_ROOT; };
-		781ECF7E1BA95C37001F70B4 /* FieldGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FieldGenerator.cpp; sourceTree = "<group>"; };
-		781ECF7F1BA95C37001F70B4 /* FieldGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldGenerator.h; sourceTree = "<group>"; };
-		781ECF801BA95C37001F70B4 /* FieldParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldParticle.h; sourceTree = "<group>"; };
-		781ECF811BA95C37001F70B4 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
-		781ECF821BA95C37001F70B4 /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
-		781ECF831BA95C37001F70B4 /* ofTrueTypeFontExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofTrueTypeFontExt.h; sourceTree = "<group>"; };
-		781ECF841BA95C37001F70B4 /* UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UI.cpp; sourceTree = "<group>"; };
-		781ECF851BA95C37001F70B4 /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
+		78B2E0681BB3DF730095B7DD /* FieldGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FieldGenerator.cpp; sourceTree = "<group>"; };
+		78B2E0691BB3DF730095B7DD /* FieldGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldGenerator.h; sourceTree = "<group>"; };
+		78B2E06A1BB3DF730095B7DD /* FieldParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldParticle.h; sourceTree = "<group>"; };
+		78B2E06B1BB3DF730095B7DD /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		78B2E06C1BB3DF730095B7DD /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
+		78B2E06D1BB3DF730095B7DD /* ofTrueTypeFontExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofTrueTypeFontExt.h; sourceTree = "<group>"; };
+		78B2E06E1BB3DF730095B7DD /* UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UI.cpp; sourceTree = "<group>"; };
+		78B2E06F1BB3DF730095B7DD /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
 		7B08E4E649CE19418198659E /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
 		846440EB6A7762A75DC0D661 /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		8FD1797ECDDC571B75C21646 /* ofxLabel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLabel.h; path = ../../addons/ofxGui/src/ofxLabel.h; sourceTree = SOURCE_ROOT; };
@@ -162,14 +162,14 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				781ECF7E1BA95C37001F70B4 /* FieldGenerator.cpp */,
-				781ECF7F1BA95C37001F70B4 /* FieldGenerator.h */,
-				781ECF801BA95C37001F70B4 /* FieldParticle.h */,
-				781ECF811BA95C37001F70B4 /* Globals.h */,
-				781ECF821BA95C37001F70B4 /* MathUtils.h */,
-				781ECF831BA95C37001F70B4 /* ofTrueTypeFontExt.h */,
-				781ECF841BA95C37001F70B4 /* UI.cpp */,
-				781ECF851BA95C37001F70B4 /* UI.h */,
+				78B2E0681BB3DF730095B7DD /* FieldGenerator.cpp */,
+				78B2E0691BB3DF730095B7DD /* FieldGenerator.h */,
+				78B2E06A1BB3DF730095B7DD /* FieldParticle.h */,
+				78B2E06B1BB3DF730095B7DD /* Globals.h */,
+				78B2E06C1BB3DF730095B7DD /* MathUtils.h */,
+				78B2E06D1BB3DF730095B7DD /* ofTrueTypeFontExt.h */,
+				78B2E06E1BB3DF730095B7DD /* UI.cpp */,
+				78B2E06F1BB3DF730095B7DD /* UI.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
@@ -274,8 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				781ECF871BA95C37001F70B4 /* UI.cpp in Sources */,
-				781ECF861BA95C37001F70B4 /* FieldGenerator.cpp in Sources */,
+				78B2E0711BB3DF730095B7DD /* UI.cpp in Sources */,
+				78B2E0701BB3DF730095B7DD /* FieldGenerator.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				FA0D4902FAA63D187EA61B31 /* ofxBaseGui.cpp in Sources */,
 				92A50AF72101624C3A8E6446 /* ofxButton.cpp in Sources */,
@@ -389,7 +389,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				PRODUCT_NAME = FieldDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -411,7 +411,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FieldDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

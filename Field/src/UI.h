@@ -27,6 +27,8 @@ public:
     ofParameter<float>		fieldNoiseAmount;
     ofParameter<float>		fieldSpiralAmount;
     ofParameter<float>		fieldUniformAmount;
+    ofParameter<float>		fieldCircularAmount;
+    ofParameter<float>		fieldOscillAmount;
     ofParameter<float>		fieldRandomOffset;
     ofParameter<float>		fieldMagnitude;
     ofParameter<float>		fieldSpaceFrequency;
@@ -35,6 +37,8 @@ public:
     ofParameter<float>		fieldMaxVel;
     ofParameter<float>		fieldMaxAge;
     ofParameter<float>		fieldSpiralRatio;
+    ofParameter<float>		fieldCircularRatio;
+    ofParameter<float>		fieldOscillRatio;
     ofParameter<float>		fieldTailLength;
     
     

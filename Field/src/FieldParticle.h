@@ -11,5 +11,5 @@ public:
     deque<ofVec3f> posHistory;
     float age;
     float distanceFromMiddle;
-    
+    int spin;
 };

@@ -24,14 +24,18 @@ void UI::setup() {
     fieldGui.add(fieldNoiseAmount.set("noise amount", 0, 0, 1));
     fieldGui.add(fieldSpiralAmount.set("spiral amount", 0, 0, 1));
     fieldGui.add(fieldUniformAmount.set("uniform amount", 1, 0, 1));
+    fieldGui.add(fieldCircularAmount.set("circular amount", 0, 0, 1));
+    fieldGui.add(fieldOscillAmount.set("oscill amount", 0, 0, 1));
     fieldGui.add(fieldMagnitude.set("magnitude", 0.1, 0, 1));
-    fieldGui.add(fieldMaxAge.set("max age", 1.5, 0, 100 ));
+    fieldGui.add(fieldMaxAge.set("max age", 1.5, 0, 10 ));
     fieldGui.add(fieldMaxVel.set("max vel", 0.5, 0, 1  ));
     fieldGui.add(fieldSpaceFrequency.set("space freq",  0.1, 0, 1 ));
     fieldGui.add(fieldTimeFrequency.set("time freq", 0.5, 0, 1  ));
     fieldGui.add(fieldOldVelAmount.set("old vel amount", 0.5, 0, 1  ));
     fieldGui.add(fieldRandomOffset.set("random offset", 0, 0, 1 ));
     fieldGui.add(fieldSpiralRatio.set("spiral ratio", 0.5, -1, 1 ));
+    fieldGui.add(fieldCircularRatio.set("circular ratio", 0.5, -1, 1 ));
+    fieldGui.add(fieldOscillRatio.set("oscill ratio", 0.5, -1, 1 ));
     fieldGui.add(fieldTailLength.set("tail length", 6, 0, 100 ));
     
     fieldGui.setPosition(ofPoint(20,100));
@@ -44,6 +48,8 @@ void UI::draw() {
     Globals::fieldNoiseAmount = fieldNoiseAmount;
     Globals::fieldSpiralAmount = fieldSpiralAmount;
     Globals::fieldUniformAmount = fieldUniformAmount;
+    Globals::fieldCircularAmount = fieldCircularAmount;
+    Globals::fieldOscillAmount = fieldOscillAmount;
     Globals::fieldMagnitude = fieldMagnitude;
     Globals::fieldSpaceFrequency = fieldSpaceFrequency;
     Globals::fieldTimeFrequency = fieldTimeFrequency;
@@ -51,6 +57,8 @@ void UI::draw() {
     Globals::fieldMaxVel = fieldMaxVel;
     Globals::fieldMaxAge = fieldMaxAge;
     Globals::fieldSpiralRatio = fieldSpiralRatio;
+    Globals::fieldCircularRatio = fieldCircularRatio;
+    Globals::fieldOscillRatio = fieldOscillRatio;
     Globals::fieldTailLength = fieldTailLength;
     
     camGui.draw();
