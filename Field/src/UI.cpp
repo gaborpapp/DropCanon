@@ -7,10 +7,9 @@ void UI::setup() {
     ofxGuiSetFont( "DIN.otf", 8 );
     
     ofxGuiSetHeaderColor( ofColor( 200, 0, 200 ) );
-    ofxGuiSetBackgroundColor(240),
+    ofxGuiSetBackgroundColor( ofColor(240,200) );
     ofxGuiSetTextColor(100);
-    ofxGuiSetFillColor(200);
-    
+    ofxGuiSetFillColor(240);
     
     bCamReset.addListener(this, &UI::onCamReset);
     camParameters.setName("Cam Params");
@@ -19,6 +18,8 @@ void UI::setup() {
     camGui.add(camZoom.set("Zoom Level", 0, 40, -10 ));
     camGui.setPosition(ofPoint(20,20));
     
+    fieldParticleShape.addListener(this,&UI::changeParticleShape);
+    fieldResetPos.addListener(this,&UI::resetParticlePos);
     fieldParameters.setName("Field Params");
     fieldGui.setup(fieldParameters);
     fieldGui.add(fieldNoiseAmount.set("noise amount", 0, 0, 1));
@@ -26,8 +27,8 @@ void UI::setup() {
     fieldGui.add(fieldUniformAmount.set("uniform amount", 1, 0, 1));
     fieldGui.add(fieldCircularAmount.set("circular amount", 0, 0, 1));
     fieldGui.add(fieldOscillAmount.set("oscill amount", 0, 0, 1));
-    fieldGui.add(fieldMagnitude.set("magnitude", 0.1, 0, 1));
-    fieldGui.add(fieldMaxAge.set("max age", 1.5, 0, 10 ));
+    fieldGui.add(fieldMagnitude.set("magnitude", 0.6, 0, 1));
+    fieldGui.add(fieldMaxAge.set("max age", 1.5, 0, 60 ));
     fieldGui.add(fieldMaxVel.set("max vel", 0.5, 0, 1  ));
     fieldGui.add(fieldSpaceFrequency.set("space freq",  0.1, 0, 1 ));
     fieldGui.add(fieldTimeFrequency.set("time freq", 0.5, 0, 1  ));
@@ -36,7 +37,11 @@ void UI::setup() {
     fieldGui.add(fieldSpiralRatio.set("spiral ratio", 0.5, -1, 1 ));
     fieldGui.add(fieldCircularRatio.set("circular ratio", 0.5, -1, 1 ));
     fieldGui.add(fieldOscillRatio.set("oscill ratio", 0.5, -1, 1 ));
-    fieldGui.add(fieldTailLength.set("tail length", 6, 0, 100 ));
+    fieldGui.add(fieldTailLength.set("tail length", 4, 0, 100 ));
+    fieldGui.add(fieldConnections.set("show connections", 0, 0, 5 ));
+    fieldGui.add(fieldParticleShape.setup("tails / dots"));
+    fieldGui.add(fieldResetPos.setup("reset pos"));
+    fieldGui.add(fieldAging.set("aging",true));
     
     fieldGui.setPosition(ofPoint(20,100));
 }
@@ -60,7 +65,8 @@ void UI::draw() {
     Globals::fieldCircularRatio = fieldCircularRatio;
     Globals::fieldOscillRatio = fieldOscillRatio;
     Globals::fieldTailLength = fieldTailLength;
-    
+    Globals::fieldConnections = fieldConnections;
+    Globals::fieldAging = fieldAging;
     camGui.draw();
     fieldGui.draw();
 }
@@ -75,5 +81,11 @@ void UI::keyPressed(int key) {
 
 void UI::onCamReset() { /**/ }
 
+void UI::changeParticleShape() {
+    Globals::fieldShowTail = !Globals::fieldShowTail;
+}
 
+void UI::resetParticlePos() {
+    Globals::fieldResetPos = 0;
+}
 

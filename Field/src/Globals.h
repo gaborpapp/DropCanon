@@ -9,6 +9,7 @@ public:
     static float camZoom;
     
     // noise grid
+    static bool  fieldShowTail;
     static int   fieldNumParticles;
     static float fieldNoiseAmount;
     static float fieldSpiralAmount;
@@ -26,5 +27,8 @@ public:
     static float fieldCircularRatio;
     static float fieldOscillRatio;
     static int   fieldTailLength;
+    static float fieldConnections;
+    static int   fieldResetPos;
+    static bool  fieldAging;
     
 };

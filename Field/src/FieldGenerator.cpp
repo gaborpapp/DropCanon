@@ -51,7 +51,9 @@ void FieldGenerator::update() {
     
     for( unsigned int i = 0; i < particles.size(); i++ ) {
         FieldParticle* p = &particles.at(i);
-        particles.at(i).age += timeDelta;
+        if(Globals::fieldAging) {
+         particles.at(i).age += timeDelta;   
+        }
         
         if( particles.at(i).age >= Globals::fieldMaxAge )
         {
@@ -80,14 +82,14 @@ void FieldGenerator::update() {
         p->posHistory.push_front( p->pos );
         while( p->posHistory.size() > Globals::fieldTailLength ) { p->posHistory.pop_back(); }
     }
+    if( Globals::fieldResetPos == 0 ) {
+        resetParticles();
+        Globals::fieldResetPos = 1;
+    }
 }
 
 ofVec3f FieldGenerator::getNoise( ofVec3f _noisePos, float _time ) {
     ofVec3f p(0,0,0);
-    
-    //	p.x += ofSignedNoise( _noisePos.x, _noisePos.y, _noisePos.z, _time );
-    //	p.y += ofSignedNoise( _noisePos.y, _noisePos.z, _noisePos.x, _time );
-    //	p.z += ofSignedNoise( _noisePos.z, _noisePos.x, _noisePos.y, _time );
     
     p.x += ofSignedNoise( _noisePos.x, _noisePos.y, _noisePos.z, _time );
     p.y += ofSignedNoise( _noisePos.y, _noisePos.z, _time,		 _noisePos.x );
@@ -121,24 +123,43 @@ ofVec3f FieldGenerator::getCircular( ofVec3f _particlePos, float _distance, floa
 
 ofVec3f FieldGenerator::getOscill( ofVec3f _particlePos, float _distance, float _ratio, float _spin, float _time ) {
     ofVec3f p(0,0,0);
-    p.x = cos(_time * _spin * _ratio ) * (_spin / 20);
-    p.y = sin(_time * _spin * _ratio ) * (_spin / 20);
-    
+    p.x = cos(_time*0.1 * _spin   ) * (_spin / 10 );
+    p.y = sin(_time*0.1 * _spin   ) * (_spin / 10 );
     return p;
 }
 
+void FieldGenerator::randomizeParticleAges() {
+    for( unsigned int i = 0; i < particles.size(); i++ ) {
+        particles.at(i).age = ofRandom( Globals::fieldMaxAge );
+        ofVec3f middle(0,0,particles.at(i).pos.z);
+        particles.at(i).distanceFromMiddle = middle.distance(particles.at(i).pos);
+    }
+}
 
+void FieldGenerator::resetParticles() {
+    int tmpNumParticles = Globals::fieldNumParticles;
+    numParticlesChanged( tmpNumParticles );
+}
 
 void FieldGenerator::draw() {
     if(!inited) {
         camera.setPosition( 0, 0, Globals::camZoom );
     }
+    rx = twx.update();
+    ry = twy.update();
+    rz = twz.update();
+    //d = twwidth.update();
+    
     camera.begin();
+    ofPushMatrix();
+    ofRotateX(rx);
+    ofRotateY(ry);
+    ofRotateZ(rz);
     
-    ofSetColor(255,0,0);
+    //ofSetColor(255,0,0);
     
-    ofDrawLine(0,-0.1,0,0.1);
-    ofDrawLine(-0.1,0,0.1,0);
+    //ofDrawLine(0,-0.1,0,0.1);
+    //ofDrawLine(-0.1,0,0.1,0);
     
     drawParticles();
     
@@ -156,7 +177,11 @@ void FieldGenerator::drawParticles() {
     */
     
     ofMesh mesh;
-    mesh.setMode( OF_PRIMITIVE_LINES );
+    if( Globals::fieldShowTail) {
+        mesh.setMode( OF_PRIMITIVE_LINES );
+    }else {
+        mesh.setMode( OF_PRIMITIVE_POINTS );
+    }
     
     ofMesh rawMesh;
     rawMesh.setMode( OF_PRIMITIVE_LINES );
@@ -168,41 +193,84 @@ void FieldGenerator::drawParticles() {
         ofSeedRandom( i << 24 );
         
         ofColor c = (Globals::invert) ? 255 : 0;
+        c.set(c.r, c.g, c.b, 255-p->age*255);
         ofSetColor(c);
-        if( p->posHistory.size() > 1 ) {
-            //  add first vertex only to rawMesh
-            rawMesh.addVertex(p->posHistory.at(0));
-            for( int j = 1; j < p->posHistory.size(); j++ ) {
-                mesh.addVertex( p->posHistory.at(j-1) );
-                mesh.addVertex( p->posHistory.at(j) );
+       
+        if( Globals::fieldShowTail) {
+            if( p->posHistory.size() > 1 ) {
+                //  add first vertex only to rawMesh
+                rawMesh.addVertex(p->pos);
+            
+                for( int j = 1; j < p->posHistory.size(); j++ ) {
+                    mesh.addColor(c);
+                    mesh.addVertex( p->posHistory.at(j-1) );
+                    mesh.addColor(c);
+                    mesh.addVertex( p->posHistory.at(j) );
+                }
             }
+        }else {
+            rawMesh.addVertex(p->pos);
+            mesh.addVertex(p->pos);
+            //float alpha = p->pos.distance(ofVec3f(0,0,Globals::camZoom) * 255);
+            
+            //ofColor cAlpha = ofColor(c.r,c.g,c.b,alpha);
+            //ofSetColor(cAlpha);
+            ofDrawCircle(p->pos, 0.01);
         }
     }
     
     ofMesh connectionMesh;
     connectionMesh.setMode( OF_PRIMITIVE_LINES );
 
-    float connectionDistance = 1;
+    float connectionDistance = Globals::fieldConnections;
     int numVerts = rawMesh.getNumVertices();
     
-    for (int a=0; a<numVerts; ++a) {
-        ofVec3f verta = rawMesh.getVertex(a);
-        for (int b=a+1; b<numVerts; ++b) {
-            ofVec3f vertb = rawMesh.getVertex(b);
-            float distance = verta.distance(vertb);
-            if (distance <= connectionDistance) {
-                float tc = 255 - distance * 100;
-                connectionMesh.addColor(ofColor(255,255,255,tc));
-                connectionMesh.addVertex(verta);
-                connectionMesh.addColor(ofColor(255,255,255,tc));
-                connectionMesh.addVertex(vertb);
+    if(Globals::fieldConnections>0) {
+        for (int a=0; a<numVerts; ++a) {
+            ofVec3f verta = rawMesh.getVertex(a);
+            for (int b=a+1; b<numVerts; ++b) {
+                ofVec3f vertb = rawMesh.getVertex(b);
+                float distance = verta.distance(vertb);
+                if (distance <= connectionDistance) {
+                    float tc = 255 - distance * 255;
+                    connectionMesh.addColor(ofColor(255,255,255,tc));
+                    connectionMesh.addVertex(verta);
+                    connectionMesh.addColor(ofColor(255,255,255,tc));
+                    connectionMesh.addVertex(vertb);
+                }
             }
         }
+        connectionMesh.draw();
     }
     mesh.draw();
-    connectionMesh.draw();
     ofPopMatrix();
     ofSeedRandom();
 }
+
+void FieldGenerator::keyPressed( int key ) {
+    if(key == '1') {
+        twx.setParameters( 1, easingexpo, ofxTween::easeOut, 0, -90, 10000, 0 );
+    }
+    if(key == 'q') {
+        twx.setParameters( 1, easingexpo, ofxTween::easeOut, -90, 0, 10000, 0 );
+    }
+    if(key == '2') {
+        twz.setParameters( 1, easingexpo, ofxTween::easeOut, 0, -90, 10000, 0 );
+    }
+    if(key == 'w') {
+        twz.setParameters( 1, easingexpo, ofxTween::easeOut, -90, 0, 10000, 0 );
+    }
+    if(key == 'd') {
+        //twwidth.setParameters( 1, easingexpo, ofxTween::easeOut, 0, 20, 80000, 0 );
+    }
+    if(key == 'r') {
+        randomizeParticleAges();
+    }
+    if(key == 't') {
+        resetParticles();
+    }
+
+}
+
 
 

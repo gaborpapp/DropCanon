@@ -1,10 +1,9 @@
 #include "ofApp.h"
-
-#include "ofApp.h"
 #include "Globals.h"
 
 float  Globals::camZoom;
 bool   Globals::invert;
+bool   Globals::fieldShowTail;
 int    Globals::fieldNumParticles;
 float  Globals::fieldNoiseAmount;
 float  Globals::fieldSpiralAmount;
@@ -22,6 +21,9 @@ float  Globals::fieldSpiralRatio;
 float  Globals::fieldCircularRatio;
 float  Globals::fieldOscillRatio;
 int    Globals::fieldTailLength;
+float  Globals::fieldConnections;
+int    Globals::fieldResetPos;
+bool   Globals::fieldAging;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -33,7 +35,8 @@ void ofApp::setup(){
     Globals::invert = true;
     Globals::camZoom = 0;
     
-    Globals::fieldNumParticles = 1500;
+    Globals::fieldNumParticles = 2000;
+    Globals::fieldShowTail = true;
     Globals::fieldNoiseAmount = 0;
     Globals::fieldSpiralAmount = 0;
     Globals::fieldUniformAmount = 1;
@@ -50,6 +53,9 @@ void ofApp::setup(){
     Globals::fieldCircularRatio = 0;
     Globals::fieldOscillRatio = 0;
     Globals::fieldTailLength = 6;
+    Globals::fieldConnections = 0;
+    Globals::fieldResetPos = 1;
+    Globals::fieldAging = true;
     
     showUI = true;
     mUI.setup();
@@ -70,12 +76,16 @@ void ofApp::draw(){
     
     fieldGenerator.draw();
     if(showUI)mUI.draw();
-    ofSetColor(200,0,200);
+    ofSetColor(200,0,0);
     ofDrawCircle(p.x,p.y,2);
+    ofDrawBitmapString(ofToString(int(ofGetFrameRate())), ofGetWidth()-50,20);
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    fieldGenerator.keyPressed(key);
+    if(key == ' ') {
+        showUI = !showUI;
+    }
 }
 
 //--------------------------------------------------------------

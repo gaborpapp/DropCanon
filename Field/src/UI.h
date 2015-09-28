@@ -18,12 +18,18 @@ public:
     ofParameter< float > camZoom;
     
     void onCamReset();
+    void changeParticleShape();
+    void resetParticlePos();
+    void changeAging(bool yes);
     
     //  field
     
     ofxPanel fieldGui;
     ofParameterGroup fieldParameters;
     
+    ofxButton               fieldParticleShape;
+    ofxButton               fieldResetPos;
+    ofParameter<bool>       fieldAging;
     ofParameter<float>		fieldNoiseAmount;
     ofParameter<float>		fieldSpiralAmount;
     ofParameter<float>		fieldUniformAmount;
@@ -40,7 +46,6 @@ public:
     ofParameter<float>		fieldCircularRatio;
     ofParameter<float>		fieldOscillRatio;
     ofParameter<float>		fieldTailLength;
+    ofParameter<float>		fieldConnections;
     
-    
-
 };
