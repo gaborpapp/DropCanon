@@ -3,10 +3,13 @@
 class Globals{
 public:
     
-    static bool invert;
+    static bool  invert;
+    static float distanceAlpha;
     
     //  camera
     static float camZoom;
+    static float camPanX;
+    static float camPanY;
     
     // noise grid
     static bool  fieldShowTail;

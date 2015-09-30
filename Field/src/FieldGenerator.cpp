@@ -21,18 +21,9 @@ void FieldGenerator::numParticlesChanged(int& _num ) {
 void FieldGenerator::reInitParticle( FieldParticle* _p ) {
     ofVec3f spawnSize(10,10,10);
     
-    //  Cuboid distribution
-    
     _p->pos = ofVec3f(  ofRandom( spawnSize.x * -0.5, spawnSize.x * 0.5),
                         ofRandom( spawnSize.y * -0.5, spawnSize.y * 0.5),
                         ofRandom( spawnSize.z * -0.5, spawnSize.z * 0.5) );
-    
-    //  Planar distribution
-    /*
-    _p->pos = ofVec3f(ofRandom( spawnSize.x * -0.5, spawnSize.x * 0.5),
-                      ofRandom( spawnSize.y * -0.5, spawnSize.y * 0.5),
-                      0.5);
-    */
     _p->vel = ofVec3f(0);
     
     _p->fieldRandomOffset = ofVec3f( ofRandom( 0, Globals::fieldRandomOffset),
@@ -148,7 +139,6 @@ void FieldGenerator::draw() {
     rx = twx.update();
     ry = twy.update();
     rz = twz.update();
-    //d = twwidth.update();
     
     camera.begin();
     ofPushMatrix();
@@ -156,25 +146,14 @@ void FieldGenerator::draw() {
     ofRotateY(ry);
     ofRotateZ(rz);
     
-    //ofSetColor(255,0,0);
-    
-    //ofDrawLine(0,-0.1,0,0.1);
-    //ofDrawLine(-0.1,0,0.1,0);
-    
+    ofTranslate( Globals::camPanX, Globals::camPanY );
     drawParticles();
-    
+    ofPopMatrix();
     camera.end();
 }
 
 void FieldGenerator::drawParticles() {
     ofPushMatrix();
-    
-    //  use rotation sensors here
-    /*  
-        ofRotateX(ofGetFrameNum());
-        ofRotateZ(ofGetFrameNum());
-        ofRotateY(ofGetFrameNum());
-    */
     
     ofMesh mesh;
     if( Globals::fieldShowTail) {
@@ -211,10 +190,12 @@ void FieldGenerator::drawParticles() {
         }else {
             rawMesh.addVertex(p->pos);
             mesh.addVertex(p->pos);
-            //float alpha = p->pos.distance(ofVec3f(0,0,Globals::camZoom) * 255);
-            
-            //ofColor cAlpha = ofColor(c.r,c.g,c.b,alpha);
-            //ofSetColor(cAlpha);
+            //  set alpha based on depth here
+            if(Globals::distanceAlpha > 0) {
+                float alpha = camera.getPosition().distance(p->pos) * Globals::distanceAlpha;
+                ofColor cAlpha = ofColor(c.r,c.g,c.b,alpha);
+                ofSetColor(cAlpha);
+            }
             ofDrawCircle(p->pos, 0.01);
         }
     }
@@ -232,10 +213,16 @@ void FieldGenerator::drawParticles() {
                 ofVec3f vertb = rawMesh.getVertex(b);
                 float distance = verta.distance(vertb);
                 if (distance <= connectionDistance) {
-                    float tc = 255 - distance * 255;
-                    connectionMesh.addColor(ofColor(255,255,255,tc));
+                    ofColor baseColor = (Globals::invert) ? 255 : 0;
+                    float alphaVal = ofMap(distance, 0, Globals::fieldConnections, 255,0);
+                    ofColor c = ofColor(baseColor.r, baseColor.g, baseColor.b, alphaVal);
+                    if(Globals::distanceAlpha > 0) {
+                        float alpha = camera.getPosition().distance(verta) * Globals::distanceAlpha;
+                        c.set(c.r,c.g,c.b,alpha);
+                    }
+                    connectionMesh.addColor(c);
                     connectionMesh.addVertex(verta);
-                    connectionMesh.addColor(ofColor(255,255,255,tc));
+                    connectionMesh.addColor(c);
                     connectionMesh.addVertex(vertb);
                 }
             }
@@ -243,7 +230,6 @@ void FieldGenerator::drawParticles() {
         connectionMesh.draw();
     }
     mesh.draw();
-    ofPopMatrix();
     ofSeedRandom();
 }
 

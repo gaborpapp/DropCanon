@@ -11,13 +11,15 @@ public:
     ofTrueTypeFontExt		fontSmall;
     
     //  camera
-    
     ofxPanel camGui;
-    ofxButton bCamReset;
+    ofxButton bInvert;
     ofParameterGroup camParameters;
+    ofParameter< float > distanceAlpha;
     ofParameter< float > camZoom;
+    ofParameter< float > camPanX;
+    ofParameter< float > camPanY;
     
-    void onCamReset();
+    void onInvert();
     void changeParticleShape();
     void resetParticlePos();
     void changeAging(bool yes);

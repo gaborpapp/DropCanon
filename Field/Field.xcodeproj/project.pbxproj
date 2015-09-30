@@ -500,6 +500,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = FieldDebug;
 				WRAPPER_EXTENSION = app;
 			};
@@ -522,6 +523,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = FieldDebug;
 				WRAPPER_EXTENSION = app;
 			};

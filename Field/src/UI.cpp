@@ -1,7 +1,6 @@
 #include "UI.h"
 #include "Globals.h"
 
-
 void UI::setup() {
     fontSmall.load("DIN.otf", 8 );
     ofxGuiSetFont( "DIN.otf", 8 );
@@ -11,11 +10,14 @@ void UI::setup() {
     ofxGuiSetTextColor(100);
     ofxGuiSetFillColor(240);
     
-    bCamReset.addListener(this, &UI::onCamReset);
-    camParameters.setName("Cam Params");
+    bInvert.addListener(this, &UI::onInvert);
+    camParameters.setName("Cam & Col Params");
     camGui.setup(camParameters);
-    camGui.add(bCamReset.setup("Reset"));
-    camGui.add(camZoom.set("Zoom Level", 0, 40, -10 ));
+    camGui.add(bInvert.setup("invert"));
+    camGui.add(distanceAlpha.set("distance-based alpha", 0, 200, 0 ));
+    camGui.add(camZoom.set("zoom level", 0, 40, -10 ));
+    camGui.add(camPanX.set("horizontal pan", 0, -40, 40 ));
+    camGui.add(camPanY.set("vertical pan", 0, -40, 40 ));
     camGui.setPosition(ofPoint(20,20));
     
     fieldParticleShape.addListener(this,&UI::changeParticleShape);
@@ -42,13 +44,14 @@ void UI::setup() {
     fieldGui.add(fieldParticleShape.setup("tails / dots"));
     fieldGui.add(fieldResetPos.setup("reset pos"));
     fieldGui.add(fieldAging.set("aging",true));
-    
-    fieldGui.setPosition(ofPoint(20,100));
+    fieldGui.setPosition(ofPoint(20,150));
 }
 
 void UI::draw() {
+    Globals::distanceAlpha = distanceAlpha;
     Globals::camZoom = camZoom;
-    
+    Globals::camPanX = camPanX;
+    Globals::camPanY = camPanY;
     Globals::fieldRandomOffset = fieldRandomOffset;
     Globals::fieldNoiseAmount = fieldNoiseAmount;
     Globals::fieldSpiralAmount = fieldSpiralAmount;
@@ -67,6 +70,7 @@ void UI::draw() {
     Globals::fieldTailLength = fieldTailLength;
     Globals::fieldConnections = fieldConnections;
     Globals::fieldAging = fieldAging;
+    
     camGui.draw();
     fieldGui.draw();
 }
@@ -79,7 +83,9 @@ void UI::keyPressed(int key) {
     }
 }
 
-void UI::onCamReset() { /**/ }
+void UI::onInvert() {
+    Globals::invert = !Globals::invert;
+}
 
 void UI::changeParticleShape() {
     Globals::fieldShowTail = !Globals::fieldShowTail;

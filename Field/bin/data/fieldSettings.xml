@@ -1,0 +1,20 @@
+<Field_Params>
+	<noise_amount>0</noise_amount>
+	<spiral_amount>0</spiral_amount>
+	<uniform_amount>0</uniform_amount>
+	<circular_amount>0</circular_amount>
+	<oscill_amount>0.235</oscill_amount>
+	<magnitude>0.08</magnitude>
+	<max_age>1.5</max_age>
+	<max_vel>0.5</max_vel>
+	<space_freq>0.1</space_freq>
+	<time_freq>0.5</time_freq>
+	<old_vel_amount>0.5</old_vel_amount>
+	<random_offset>0</random_offset>
+	<spiral_ratio>0.5</spiral_ratio>
+	<circular_ratio>0.5</circular_ratio>
+	<oscill_ratio>0.5</oscill_ratio>
+	<tail_length>4</tail_length>
+	<show_connections>0.55</show_connections>
+	<aging>0</aging>
+</Field_Params>

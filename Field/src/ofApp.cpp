@@ -2,7 +2,11 @@
 #include "Globals.h"
 
 float  Globals::camZoom;
+float  Globals::camPanY;
+float  Globals::camPanX;
+
 bool   Globals::invert;
+float  Globals::distanceAlpha;
 bool   Globals::fieldShowTail;
 int    Globals::fieldNumParticles;
 float  Globals::fieldNoiseAmount;
@@ -28,11 +32,12 @@ bool   Globals::fieldAging;
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0,0,0);
-    ofSetBackgroundAuto(false);
+    //ofSetBackgroundAuto(false);
     ofSetVerticalSync(false);
     ofEnableAlphaBlending();
     
     Globals::invert = true;
+    Globals::distanceAlpha = 0;
     Globals::camZoom = 0;
     
     Globals::fieldNumParticles = 2000;
@@ -77,13 +82,14 @@ void ofApp::draw(){
     fieldGenerator.draw();
     if(showUI)mUI.draw();
     ofSetColor(200,0,0);
-    ofDrawCircle(p.x,p.y,2);
+    //ofDrawCircle(p.x,p.y,2);
     ofDrawBitmapString(ofToString(int(ofGetFrameRate())), ofGetWidth()-50,20);
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    fieldGenerator.keyPressed(key);
-    if(key == ' ') {
+    fieldGenerator.keyPressed( key );
+    mUI.keyPressed( key );
+    if( key == ' ' ) {
         showUI = !showUI;
     }
 }
