@@ -10,6 +10,7 @@
 		0E459598E225E56585AC1CD9 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48DCDAD346F8188ABA98C64A /* ofxPanel.cpp */; };
 		3A47706C1DF9A0D4045568C0 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D015FA91E7717ECC9591593E /* ofxGuiGroup.cpp */; };
 		413A3F52C6AC90B4F28A6A1C /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 448869D12B9D05298EF975CB /* ofxToggle.cpp */; };
+		782C3F141BBD217900AA9962 /* ofxVideoRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 782C3F121BBD217900AA9962 /* ofxVideoRecorder.cpp */; settings = {ASSET_TAGS = (); }; };
 		78ADBEF81BB6977F00DF84F2 /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ADBEDE1BB6977F00DF84F2 /* ofxEasing.cpp */; settings = {ASSET_TAGS = (); }; };
 		78ADBEF91BB6977F00DF84F2 /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ADBEE01BB6977F00DF84F2 /* ofxEasingBack.cpp */; settings = {ASSET_TAGS = (); }; };
 		78ADBEFA1BB6977F00DF84F2 /* ofxEasingBounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78ADBEE21BB6977F00DF84F2 /* ofxEasingBounce.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -73,6 +74,9 @@
 		4581B326630EC957ED91E25E /* ofxToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxToggle.h; path = ../../addons/ofxGui/src/ofxToggle.h; sourceTree = SOURCE_ROOT; };
 		48DCDAD346F8188ABA98C64A /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxPanel.cpp; path = ../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
 		70AAD97154A7F3A7E07DD2E8 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSliderGroup.cpp; path = ../../addons/ofxGui/src/ofxSliderGroup.cpp; sourceTree = SOURCE_ROOT; };
+		782C3F101BBD217900AA9962 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		782C3F121BBD217900AA9962 /* ofxVideoRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoRecorder.cpp; sourceTree = "<group>"; };
+		782C3F131BBD217900AA9962 /* ofxVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVideoRecorder.h; sourceTree = "<group>"; };
 		78ADBED81BB6977F00DF84F2 /* .cproject */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .cproject; sourceTree = "<group>"; };
 		78ADBED91BB6977F00DF84F2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		78ADBEDA1BB6977F00DF84F2 /* .project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = .project; sourceTree = "<group>"; };
@@ -148,6 +152,25 @@
 				A763ED608B35AE3310251DEE /* src */,
 			);
 			name = ofxGui;
+			sourceTree = "<group>";
+		};
+		782C3F0F1BBD217900AA9962 /* ofxVideoRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				782C3F101BBD217900AA9962 /* .gitignore */,
+				782C3F111BBD217900AA9962 /* src */,
+			);
+			name = ofxVideoRecorder;
+			path = src/ofxVideoRecorder;
+			sourceTree = "<group>";
+		};
+		782C3F111BBD217900AA9962 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				782C3F121BBD217900AA9962 /* ofxVideoRecorder.cpp */,
+				782C3F131BBD217900AA9962 /* ofxVideoRecorder.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		78ADBED71BB6977F00DF84F2 /* ofxTween */ = {
@@ -231,6 +254,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				782C3F0F1BBD217900AA9962 /* ofxVideoRecorder */,
 				78ADBED71BB6977F00DF84F2 /* ofxTween */,
 				480A780D8D0308AE4A368801 /* ofxGui */,
 			);
@@ -384,6 +408,7 @@
 				78ADBF021BB6977F00DF84F2 /* ofxEasingQuint.cpp in Sources */,
 				78ADBEFB1BB6977F00DF84F2 /* ofxEasingCirc.cpp in Sources */,
 				3A47706C1DF9A0D4045568C0 /* ofxGuiGroup.cpp in Sources */,
+				782C3F141BBD217900AA9962 /* ofxVideoRecorder.cpp in Sources */,
 				78ADBEFC1BB6977F00DF84F2 /* ofxEasingCubic.cpp in Sources */,
 				B38AE0704C26620B0B1F72E4 /* ofxLabel.cpp in Sources */,
 				78ADBEF81BB6977F00DF84F2 /* ofxEasing.cpp in Sources */,

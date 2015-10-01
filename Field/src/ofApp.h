@@ -3,13 +3,14 @@
 #include "ofMain.h"
 #include "UI.h"
 #include "FieldGenerator.h"
+#include "ofxVideoRecorder.h"
 
 class ofApp : public ofBaseApp{
-
 	public:
 		void setup();
 		void update();
 		void draw();
+        void exit();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -23,7 +24,14 @@ class ofApp : public ofBaseApp{
     
         FieldGenerator fieldGenerator;
         UI mUI;
-    
         bool showUI;
-        ofVec2f p;
+    
+        // record video
+        ofxVideoRecorder videoRecorder;
+        bool bRecording;
+        string fileName;
+        string fileExt;
+        ofFbo recordFbo;
+        ofPixels recordPixels;
+        float elapsed;
 };

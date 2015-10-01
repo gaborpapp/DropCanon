@@ -11,7 +11,7 @@ public:
     static float camPanX;
     static float camPanY;
     
-    // noise grid
+    // noise field
     static bool  fieldShowTail;
     static int   fieldNumParticles;
     static float fieldNoiseAmount;

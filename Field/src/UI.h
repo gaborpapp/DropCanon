@@ -25,7 +25,6 @@ public:
     void changeAging(bool yes);
     
     //  field
-    
     ofxPanel fieldGui;
     ofParameterGroup fieldParameters;
     

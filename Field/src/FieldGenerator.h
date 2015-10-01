@@ -4,6 +4,7 @@
 #include "MathUtils.h"
 #include "FieldParticle.h"
 #include "ofxTween.h"
+#include "UI.h"
 
 class FieldGenerator {
 public:
